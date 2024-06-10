@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from foodapp.models import *
+
+
 
 
 # Create your views here.
@@ -17,5 +19,14 @@ def foodview(request):
             food_name = name,
             food_description = description
         )
+    
+    queryset = Food.objects.all()
 
-    return render(request, 'food.html')
+
+    return render(request, 'food.html', context={'food':queryset})
+
+
+def delete_food(request, id):
+    queyset = Food.objects.get(id = id)
+    queyset.delete()
+    return redirect('/')
