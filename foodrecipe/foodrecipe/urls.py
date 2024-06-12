@@ -20,11 +20,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from foodapp.views import delete_food, foodview
+from foodapp.views import *
 
 urlpatterns = [
     path('', foodview),
+    
     path('delete-food/<id>/', delete_food),
+    path('update-food/<id>',update_food),
     path('admin/', admin.site.urls),
 
 ]

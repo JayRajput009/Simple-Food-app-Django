@@ -13,30 +13,26 @@
 
    
 <form method="post" enctype="multipart/form-data">
-   
 
         <div class="formbold-main-wrapper">
-
             <div class="formbold-form-wrapper">
-                <h1> Add Food </h1>
-
+                <h1> Update Food </h1>
+                <hr>
 
                 <div class="formbold-input-flex">
                     {% csrf_token %}
-                    
                    
-                    
 
                     <div>
                         <label for="Food Name" class="formbold-form-label"> Food Name </label>
-                        <input required="true" type="text" name="name" id="firstname" placeholder="Biryani"
+                        <input required="true" value="{{food.food_name}}" type="text" name="food_name" id="firstname" placeholder="Biryani"
                             class="formbold-form-input" />
                     </div>
 
 
                     <div>
                         <label for="Food Image" class="formbold-form-label"> Food Image </label>
-                        <input required="true" type="file" name="image" id="phone" placeholder="(319) 555-0115"
+                        <input required="true" type="file" name="food_image" id="phone" placeholder="(319) 555-0115"
                             class="formbold-form-input" />
                     </div>
                 </div>
@@ -44,62 +40,22 @@
 
                 <div>
                     <label for="Description" class="formbold-form-label"> Description </label>
-                    <textarea required="true" rows="6" name="description" id="message" placeholder="Type your message"
-                        class="formbold-form-input"></textarea>
+                    <textarea required="true"  rows="6" name="food_description" id="message" placeholder="Type your message"
+                        class="formbold-form-input">{{food.food_description}}</textarea>
                 </div>
 
-                <button class="formbold-btn">
-                    Send Message
+                <button class="formbold-btn" >
+                    Update Food
                 </button>
     </form>
     </div>
     </div>
     </form>
 
-    
-    <div class="card">
-        {% for foods in food %}
-        <img src="/media/{{foods.food_image}}" alt="Basic Veg">
-        <div class="card-content">
-            <h2>{{foods.food_name}}</h2>
-            <p>{{foods.food_description}}</p>
-        </div>
-        <button class="delete-button"><a href="/delete-food/{{foods.id}}">Delete</button>
-        <button class="update-button"><a href="/update-food/{{foods.id}}">Update</button>
-
-        {% endfor %}
-
-        
-    </div>
+   
 
 
 
-
-    <!-- <table class="table">
-        <thead>
-            <tr>
-
-                <th scope="col">RE no.</th>
-                <th scope="col">Food Name</th>
-                <th scope="col">Fodd Description</th>
-                <th scope="col">Fodd image</th>
-
-            </tr>
-        </thead>
-        {% for foods in food %}
-        <tbody>
-            <tr>
-
-                <td>{{forloop.counter}}</td>
-                <td>{{foods.food_name}}</td>
-                <td>{{foods.food_description}}</td>
-                <td>{{foods.food_image}}</td>
-
-            </tr>
-
-        </tbody>
-        {% endfor %}
-    </table> -->
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
